@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link href="style.css" rel="stylesheet">
+        <title>{% block title %}  {% endblock %}</title>
+    </head> 
+    <body>
+        {% block body %}
+        <form action="/recipes">
+            <h1>What do you have in the fridge?</h1>
+            <container>
+                <input type="text" placeholder="Cheese,flour,spinach..." name="ingridients">
+                <button type="submit">Search</button>
+            </container>
+        </form>
+        {% endblock %}
+    </body>
+</html>
