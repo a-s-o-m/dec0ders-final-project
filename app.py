@@ -1,17 +1,11 @@
-from flask import Flask, render_template,request,url_for
-import requests
+from flask_pymongo import PyMongo
+from flask import Flask, render_template, request, redirect, url_for
+from model import get_recipes, get_recipes_test
 
 app = Flask(__name__)
 
-url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/"
-headers = {
-  'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-  'x-rapidapi-key': "7557410a9bmsh5338d5c3d59ebdbp1c1418jsn9d0fd7a3e354",
-  }
-
-random_joke = "food/jokes/random"
-find = "recipes/findByIngredients"
-randomFind = "recipes/random"
+# App variables
+recipes = dict()
 
 
 # HOME Route
@@ -25,19 +19,25 @@ def home():
 def search():
     return render_template('search_page.html')
 
-@app.route('/recipes')
-def get_recipes():
-    if (str(request.args['ingridients']).strip() != ""):
-      # If there is a list of ingridients -> list
-      querystring = {"number":"5","ranking":"1","ignorePantry":"false","ingredients":request.args['ingridients']}
-      response = requests.request("GET", url + find, headers=headers, params=querystring).json()
-      return render_template('recipes.html', recipes=response)
-    else:
-      # Random recipes
-      querystring = {"number":"5"}
-      response = requests.request("GET", url + randomFind, headers=headers, params=querystring).json()
-      print(response)
-      return render_template('recipes.html', recipes=response['recipes'])
+@app.route('/your-recipes', methods=['GET','POST'])
+def user_recipes():
+    if request.method == 'POST': # User requests recipes with new ingredients
+        global recipes 
+        ingredients_input = request.form['ingredients']
+        # recipes = get_recipes(ingredients_input)
+        recipes = get_recipes_test() # Dummy recipe data for testing purposes
 
+        return render_template('recipes.html', recipes=recipes)
+    else:
+        return render_template('recipes.html', recipes=recipes)
+
+@app.route('/recipe', methods = ['POST'])
+def user_recipe():
+    recipe_id = request.form['id']
+    recipe = recipes[recipe_id]
+
+    return render_template('recipe.html', recipe=recipe)
+
+    
 if __name__=='__main__':
     app.run(debug=True)
