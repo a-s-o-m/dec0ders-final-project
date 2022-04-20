@@ -7,8 +7,16 @@ app = Flask(__name__)
 # App variables
 recipes = dict()
 
+
+# HOME Route
 @app.route('/')
-def index():
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/search')
+def search():
     return render_template('search_page.html')
 
 @app.route('/your-recipes', methods=['GET','POST'])
