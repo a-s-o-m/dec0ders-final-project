@@ -1,0 +1,122 @@
+/* Fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Montserrat:wght@200;500;700&display=swap');
+/* Variables */
+:root {
+    --background-color:#eae7dc;
+    --font-color:#25242a;
+    --nav-font:'Capriola', sans-serif;
+    --body-font:'Montserrat', sans-serif;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+}
+.main-container {
+    height: inherit;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-family: var(--body-font);
+    
+}
+.caption-container {
+    margin-top: 1%;
+    padding: 1%;
+    background-color: #eae7dc49;
+    border: 1px solid #d8c3a542;
+    border-radius: 2%;
+    box-shadow:1px 1px 2px 1px #81535581;
+}
+.recipe-caption {  
+    letter-spacing: .1em;
+    color: #25242ada;
+    font-weight: 500;
+}
+.recipe-scroller {
+    margin-top: 1%;
+    height: 75%;
+    width: 93%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 23%;
+    overflow-x: auto;
+    background-color: #f5efd71f;
+    border: 2px solid #8e8d8a1a;
+    border-radius: .5%;
+}
+.recipe-card {
+    margin: 5%;
+    padding: 5%;
+    background-color: #eae7dc2d;
+    border: 1px solid #d8c3a548;
+    box-shadow:2px 2px 5px 2px #eae7dc3a;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow-wrap: break-word;
+}
+.recipe-card:hover {
+    box-shadow:2px 2px 5px 2px #81535581;
+    border: 1px solid #25242ada;
+}
+.recipe-title {
+    letter-spacing: .1em;
+    font-weight: 500;
+    font-size: 1.2em;
+    overflow-wrap: inherit;
+    color: #e85a4f;
+}
+.recipe-image {
+    inline-size: 100%;
+    object-fit: cover;
+    border: 2px solid #81535594;
+    border-radius: 1%;
+    box-shadow: 1px 1px 2px 1px #81535581;
+}
+.recipe-summary {
+    text-align: left;
+    overflow-wrap: inherit;
+}
+form {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+.directions-button {
+    font-family: var(--nav-font);
+    letter-spacing: .2em;
+    padding: 9%;
+    background-color: white;
+    border: 1px solid #25242ada;
+    border-radius: 3%;
+    color: #25242ada; 
+    font-size: 0.9em;
+}
+.directions-button:hover { 
+    box-shadow:1px 1px 2px 1px #81535581;
+    font-weight: bold;
+}
+.directions-button:active {
+    transform: translateY(3px);
+}
+.recipe-summary p {
+    margin-top: 3%;
+    color: var(--font-color);
+    letter-spacing: .05em;
+    color: #25242ada;
+    font-weight: normal;
+}
+.accent2{
+    color: #6B7D7D;
+}
+.accent1 {
+    color: #e85a4f;
+}
+
+
