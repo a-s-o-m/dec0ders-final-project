@@ -13,8 +13,16 @@ random_joke = "food/jokes/random"
 find = "recipes/findByIngredients"
 randomFind = "recipes/random"
 
+
+# HOME Route
 @app.route('/')
-def index():
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/search')
+def search():
     return render_template('search_page.html')
 
 @app.route('/recipes')
