@@ -30,20 +30,25 @@
                     background-color: var(--nav-background);
                     box-shadow:0 0 5px 0 #d8c3a56b;
                 }
-                .nav-container-right,.nav-container-left {
-                    width: 35%;
+                .nav-container-right {
+                    width: 80%;
                     display: flex;
                     align-items: center;
+                    justify-content: center;
                 }
-                .nav-container-left{
+                /* .nav-container-left{
                     justify-content: right;
-                }
+                } */
                 .logo {
-                    margin-top: 2%;
-                    height: 85%;
+                    height: 100%;
+                }
+                .logo-container {
+                    margin-top: 1%;
+                    height: 83%;
+                    width: 5%;
                 }
                 .nav-caption {
-                    margin-left: 10%;
+                    margin-left: 6%;
                     color: var(--nav-font);
                     font-family: var(--nav-font);
                     letter-spacing: .2em;
@@ -56,28 +61,27 @@
                 .nav-caption:hover {
                     transform: translateY(-1px);
                 }
-                /* .nav-caption:hover span {
-                    color: #25242a;
-                } */
                 a {
                     color: inherit; 
                     text-decoration: none; 
                 }
             </style>
             <div class="nav-container-right">
-                <img class="logo" src="{{ url_for('static', filename='/assets/logo.png')}}">
+                <a class="logo-container" href="/home">
+                    <img class="logo" src="{{ url_for('static', filename='/assets/logo.png')}}">
+                </a>
                 <h4 class="nav-caption">
-                    <a href='/' >Home</a>    
+                    <a href='/' ><span>Home</span></a>    
                 </h4>
                 <h4 class="nav-caption">
-                    <a href='/fridge' >My <span>Fridge</span></a>
+                    <a href='/fridge' >My Fridge</a>
+                </h4>
+                <h4 class="nav-caption">
+                    <a href='/shoppping_list'><span>My Shopping List</span></a>
                 </h4>
             </div>
-            <div class="nav-container-left">
-                <h4 class="nav-caption">
-                    <a href='/shoppping_list'>My <span>Shopping</span> List</a>
-                </h4>
-            </div>
+            <!-- <div class="nav-container-left">
+            </div> -->
         </div>
         {% block body %}
         {% endblock %}
