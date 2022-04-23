@@ -1,4 +1,20 @@
 import requests
+from collections import defaultdict
+class User:
+    def __init__(self, email: str):
+        '''
+        Holds information for the logged in user
+        '''
+        self.email = email
+        self.recipes: Recipe = []
+        self.grocery_list: GroceryList = []
+
+    def to_doc(self):
+        pass
+
+    @classmethod
+    def from_doc(cls, doc):
+        pass
 
 class Recipe:
     def __init__(self, id: str, title: str, image: str, total_ingredients: [str], miss_ing: [str], directions: [str], miss_ing_count: str, ing_count: str, servings: str, prep_time: str):
@@ -117,3 +133,26 @@ def get_recipes_test():
         "3323":Recipe("33","Croque Monsieur","https://spoonacular.com/recipeImages/268203-312x231.jpg",['ham','cheese','bread'],
         ['mayo'],['put cheese on bread','soak sandwich on soap','enjoy'],'1','3','1','400')
     }
+
+class GroceryList:
+    def __init__(self):
+        '''
+        Holds all the missing ingredients that were added to the grocery list for the user
+        Arguments:
+        groceries_to_get: List of Strings containing the user's necessary missing ingredients
+        '''
+        self.groceries_dict = defaultdict(int)
+
+    def add_to_grocery_list(self, groceries_to_get: list):
+        for grocery in groceries_to_get:
+            self.groceries_dict[grocery] += 1
+        
+    def remove_from_grocery_list(self, groceries_to_remove: list):
+        for grocery in groceries_to_remove:
+            if self.groceries_dict[grocery] > 1:
+                self.groceries_dict[grocery] -= 1
+            else: del self.groceries_dict[grocery]
+
+    @classmethod
+    def from_doc(cls, doc):
+        pass
