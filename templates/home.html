@@ -14,21 +14,17 @@
         <h3>Empty your fridge and fill your stomach today!</h3>
         <p>Dont know what to cook, no worries, we got you covered!</p>
         <!-- instruction should only show if not logeed in-->
-        <p>Enter your email and click browse now to get started.</p>
-        <!-- form here to input email here-->
         <!-- form should only show if no currently logged in user-->
         {% if not existing_user%}
-        <form method="post" action="/home"></form>
-        <form>
-            <input type="email" placeholder="Enter your email">
-            <input type="submit" value="Submit">
+        <p>Enter your email and click submit to get started.</p>
+        <form method="post" action="/email">
+            <input name="email" placeholder="Enter your email">
+            <input class="btn" type="submit" value="Submit">
         </form>
-        
         {%else%}
-        <p>Welcome!, lets get startes</p>
+        <!-- <p>Welcome!, lets get started</p> -->
         <a href="/search" class="btn">Browse Now</a>
         {% endif %}
-        <!-- <a href="/email" class="btn">Get Started</a> -->
     </div>
 
     <div class="image">

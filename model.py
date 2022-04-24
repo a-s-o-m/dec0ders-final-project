@@ -14,11 +14,14 @@ class User:
 
 
     def add_to_grocery_list(self, groceries_to_get):
+        # print(groceries_to_get)
+        # print(groceries_to_get.split(','))
         for grocery in groceries_to_get.split(','):
+            print(grocery)
             self.grocery_list[grocery] += 1
 
     #invoked if recipe is removed or marked as done  
-    def remove_from_grocery_list(self, groceries_to_remove: list):
+    def remove_from_grocery_list(self, groceries_to_remove):
         for grocery in groceries_to_remove:
             if self.grocery_list[grocery] > 1:
                 self.grocery_list[grocery] -= 1
@@ -42,10 +45,12 @@ class User:
         }
 
     @classmethod
-    def from_doc(cls, doc): 
-        cls.email = doc['email']
-        cls.recipes = doc['recipes']
-        cls.grocery_list = doc['grocery_list']       
+    def from_doc(cls, doc):
+        user = cls(doc['email'])
+        user.recipes = doc['recipes']
+        user.grocery_list = defaultdict(int, doc['grocery_list'])
+        return user         
+      
 
 class Recipe:
     def __init__(self, id, title, image, total_ingredients, missing_ing, directions, missing_ing_count, ing_count, servings, prep_time, likes):
