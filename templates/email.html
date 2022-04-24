@@ -1,0 +1,15 @@
+{% extends 'nav-bar.html' %}
+{% block title %}- Login{% endblock title %}
+{% block css %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/email.css') }}">
+{% endblock css %}
+
+{% block body %}
+<body>
+    <h1></h1>
+    <!-- <form method="POST" action="/email"> -->
+        <input type="text" name="Email" placeholder="enter email" /> <br>
+    </form>
+    <!-- <h2>{{error}}</h1> -->
+</body>
+{% endblock body %}
