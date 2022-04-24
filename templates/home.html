@@ -1,27 +1,12 @@
+{% extends 'nav-bar.html'%}
+{% block title%}-BiteHunt{%endblock title%}
 {% block css %}
 <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/home.css') }}">
 {% endblock css %}
 
+
+
 {% block body %}
-<header>
- 
-    <div id="menu-bar" class="fas fa-bars"></div>
-        <nav class = "navbar">
-            <a class="logo-container" href="/home">
-                <img class="logo" src="{{ url_for('static', filename='/assets/logo.png')}}">
-            </a>
-            <h4 class="nav-caption">
-                <a href='/my-recipes' ><span>Recipes</span></a>    
-            </h4>
-            <h4 class="nav-caption">
-                <a href='/recipe'>My Fridge</a>
-            </h4>
-            <h4 class="nav-caption">
-                <a href='/grocery-list'><span>My Shopping List</span></a>
-            </h4>
-                
-        </nav>
-</header> 
 
 <section class="home" id="home">
 
@@ -29,6 +14,7 @@
         <h3>Empty your fridge and fill your stomach today!</h3>
         <p>Dont know what to cook, no worries, we got you covered!</p>
         <a href="/search" class="btn">Browse Now</a>
+        <a href="/email" class="btn">Get Started</a>
     </div>
 
     <div class="image">

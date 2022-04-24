@@ -59,6 +59,7 @@ section{
   overflow: hidden;
   z-index: 0;
   margin-top: 1rem;
+  top:0; left:520;
 }
 
 .btn::before{
@@ -157,12 +158,16 @@ span {
 .home .content h3{
   font-size: 5rem;
   color:#333;
+  position: fixed;
+  top:350; left:600;
+  
 }
 
 .home .content p{
   font-size: 1.7rem;
   color:#666;
   padding:1rem 0;
+  
 }
 
   
@@ -195,7 +200,7 @@ span {
   
   
   
-  /* media queries  */
+  /* media queries 
   
   @media(max-width:991px){
   
@@ -253,4 +258,4 @@ span {
     }
   
   }
-
+ */
