@@ -13,6 +13,9 @@
 html, body {
     height: 100%;
     overflow-y: hidden;
+    background:url(../assets/background.jpg) no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
 }
 .main-container {
     height: inherit;
@@ -20,6 +23,7 @@ html, body {
     flex-flow: column;
     align-items: center;
     font-family:'Nunito', sans-serif;
+    
 }
 .caption-container {
     margin-top: 1%;
@@ -50,7 +54,7 @@ html, body {
 .recipe-card {
     margin: 5%;
     padding: 5%;
-    background-color: #eae7dc07;
+    background-color: #ffffffbd;
     border: 1px solid #817e7e57;
     border-radius: .5em;
     display: flex;
