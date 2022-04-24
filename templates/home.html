@@ -13,19 +13,27 @@
     <div class="content">
         <h3>Empty your fridge and fill your stomach today!</h3>
         <p>Dont know what to cook, no worries, we got you covered!</p>
-        <p>Enter your email and click browse now to get started.</p>
-        <!-- form here to input email here-->
+        <!-- instruction should only show if not logeed in-->
         <!-- form should only show if no currently logged in user-->
         {% if not existing_user%}
+<<<<<<< HEAD
         <form>
                 <a href = "/email" class = "btn">Enter your email!</a>
         </form>
                
         {%else%}
         <p>Welcome!, lets get started</p>
+=======
+        <p>Enter your email and click submit to get started.</p>
+        <form method="post" action="/email">
+            <input name="email" placeholder="Enter your email">
+            <input class="btn" type="submit" value="Submit">
+        </form>
+        {%else%}
+        <!-- <p>Welcome!, lets get started</p> -->
+>>>>>>> c3296f79a5c848faf96cebd1abbc9215702e224e
         <a href="/search" class="btn">Browse Now</a>
         {% endif %}
-        <!-- <a href="/email" class="btn">Get Started</a> -->
     </div>
 
     <div class="image">
