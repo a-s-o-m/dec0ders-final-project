@@ -41,10 +41,10 @@ def search():
 
 @app.route('/grocery-list', methods = ['GET','POST'])
 def shopping_list():
+    global user
     if request.method == 'POST':
-        global user
         user.add_to_grocery_list(request.form['missing_ing'])
-    return render_template('grocery-list.html', grocery_list = user.get_grocery_list(), user_email = user.email)
+    return render_template('grocery-list.html', grocery_list = user.get_grocery_list(), user_email = user.email, email_body = user.get_grocery_list_email_body())
 
 @app.route('/my-recipes', methods=['GET','POST'])
 def user_recipes():

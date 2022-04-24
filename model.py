@@ -27,6 +27,12 @@ class User:
     def get_grocery_list(self):
         return self.grocery_list
 
+    def get_grocery_list_email_body(self):
+        body = ''
+        for grocery, quantity in self.grocery_list.items():
+            body += f"{grocery} (x{quantity}) %0D%0A"
+        return body
+
     def to_doc(self):
         return {
             'email': self.email,
