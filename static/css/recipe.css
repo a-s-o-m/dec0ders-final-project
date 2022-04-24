@@ -6,6 +6,9 @@
 }
 html, body {
     height: 100%;
+    background:url(../assets/background.jpg) no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
 }
 .main-container {
     height: 110%;
@@ -33,7 +36,7 @@ html, body {
     display: flex;
     flex-flow: column;
     overflow-wrap: break-word;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .recipe-header-information h1 {
     font-size: 2.2em;
@@ -44,7 +47,7 @@ html, body {
 .recipe-stats {
     margin-top: 1%;
     height: 15%;
-    width: 65%;
+    width: 70%;
     display: flex;
 }
 .stat-box {
@@ -77,16 +80,16 @@ html, body {
     color: #e85a4f;
 }
 .recipe-header-ingredients {
-    margin-top: 1.5%;
+    margin-top: 1%;
     margin-left: 3%;
     height: 40%;
     overflow-wrap: break-word;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .missing-ing-button {
-    margin-top: 1.5%;
+    margin-top: 2%;
     margin-left: 2.5%;
     padding:.5rem 1rem;
     border:2px solid #e85a4f;
@@ -120,6 +123,7 @@ html, body {
     margin-top: 1%;
     border: 1px solid #ddd9cd;
     border-radius: 1em;
+    background-color: #ffffffbd;
 }
 .direction-box {
     padding: 2%;;
@@ -128,5 +132,6 @@ html, body {
 }
 .step-number {
     width: 3%;
+    margin: auto 0;
     text-align:start;
 }
