@@ -8,22 +8,23 @@ html, body {
     height: 100%;
 }
 .main-container {
-    height: inherit;
+    height: 110%;
     display: flex;
     flex-flow: column;
     align-items: center;
     font-family:'Nunito', sans-serif;
 }
 .recipe-header-container {
-    padding: .5%;
-    height: 45%;
+    padding: 1%;
+    height: 100%;
     width: 70%;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-bottom: 1px solid #ddd9cd;
 }
 .recipe-header-image {
-    height: 90%;
+    height: 100%;
     border-radius: 1em;
 }
 .recipe-header-information {
@@ -33,17 +34,17 @@ html, body {
     display: flex;
     flex-flow: column;
     overflow-wrap: break-word;
-
+    justify-content: space-between;
 }
 .recipe-header-information h1 {
     font-size: 2.2em;
     margin-top: 2%;
-    margin-left: 2.5%;
+    margin-left: 3%;
 
 }
 .recipe-stats {
-    margin-top: 2%;
-    height: 17%;
+    margin-top: 1%;
+    height: 15%;
     width: 48%;
     display: flex;
 }
@@ -56,7 +57,7 @@ html, body {
     justify-content: space-evenly;
 }
 .divider {
-    width: 1px;
+    width: 2px;
     height: 95%;
     background-color: #afafae;
 }
@@ -78,17 +79,17 @@ html, body {
 }
 .recipe-header-ingredients {
     margin-top: 1.5%;
-    margin-left: 2.5%;
+    margin-left: 3%;
     height: 40%;
     overflow-wrap: break-word;
     display: flex;
     flex-flow: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .missing-ing-button {
-    margin-top: 2%;
+    margin-top: 1.5%;
     margin-left: 2.5%;
-    padding:1rem 1rem;
+    padding:.5rem 1rem;
     border:2px solid #e85a4f;
     color:#e85a4f;
     background-color: white;
