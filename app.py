@@ -19,6 +19,11 @@ def home():
 def search():
     return render_template('search_page.html')
 
+
+@app.route('/grocery-list')
+def shopping_list():
+    return render_template('grocery-list.html')
+
 @app.route('/your-recipes', methods=['GET','POST'])
 def user_recipes():
     if request.method == 'POST': # User requests recipes with new ingredients
