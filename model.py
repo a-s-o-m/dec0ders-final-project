@@ -162,4 +162,4 @@ class GroceryList:
 
     @classmethod
     def from_doc(cls, doc):
-        pass
+        pass 

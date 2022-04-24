@@ -5,6 +5,7 @@ from model import get_recipes, get_recipes_test
 app = Flask(__name__)
 
 # App variables
+# user = User('')
 recipes = dict()
 
 
@@ -21,6 +22,7 @@ def search():
 
 @app.route('/grocery-list')
 def shopping_list():
+    # grocery_list = grocery_list
     return render_template('grocery-list.html')
 
 @app.route('/my-recipes', methods=['GET','POST'])

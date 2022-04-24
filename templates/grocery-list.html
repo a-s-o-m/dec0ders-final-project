@@ -23,22 +23,15 @@
 </header> 
 
 <section class="home" id="home">
-
     <div class="content">
         <h3>Shopping List</h3>
-        <p>Food Item (x5)</p>
+        {% for grocery in grocery_list %}
+        <p>{{grocery}} x({{grocery_list[grocery]}})</p>
+        {% endfor %}
+        <!-- user email-->
+        <a href="mailto:webmaster@example.com" class="btn">Email </a>
+        <a onclick="window.print();" class="btn">Print </a>
     </div>
-
-    <!-- 2 buttons-->
-
 </section>
-
-
-
-<!-- <div class="loader-container">
-    <img src="{{url_for('static', filename='assets/loader.gif')}}" alt="">
-</div>      -->
-<!-- link to javascript page  -->
-<!-- <script src="{{ url_for('static', filename='home.js')}}"></script> -->
     
 {% endblock body %}
