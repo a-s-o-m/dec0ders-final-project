@@ -2,12 +2,29 @@ from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, url_for
 from model import User, get_recipes, get_recipes_test
 
-app = Flask(__name__)
-
 # App variables
+app = Flask(__name__)
+# name of database
+app.config['MONGO_DBNAME'] = 'database'
+
+# URI of database
+# Accessed from CONFIG VARS
+app.config['MONGO_URI'] = "mongodb+srv://test:<-password->@finalproject.wnetq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+#Initialize PyMongo
+mongo = PyMongo(app)
+
 # find user with email
+users = mongo.db.users
+        #search for username/email in database
+existing_user = users.find_one({'email': request.form['email']})
+
+if not existing_user:
+    user = User(request.form['email'])
+    users.insert_one(user.to_doc())
+else: user = User.from_doc(existing_user)
+
 # transform to user object using from_doc method
-user = User('demo@user.com')
 recipes = dict()
 
 
