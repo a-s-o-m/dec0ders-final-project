@@ -1,11 +1,13 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, url_for
-from model import get_recipes, get_recipes_test
+from model import User, get_recipes, get_recipes_test
 
 app = Flask(__name__)
 
 # App variables
-# user = User('')
+# find user with email
+# transform to user object using from_doc method
+user = User('demo@user.com')
 recipes = dict()
 
 
@@ -20,10 +22,11 @@ def home():
 def search():
     return render_template('search_page.html')
 
-@app.route('/grocery-list')
+@app.route('/grocery-list', methods = ['GET','POST'])
 def shopping_list():
-    # grocery_list = grocery_list
-    return render_template('grocery-list.html')
+    if request.method == 'POST':
+        user.add_to_grocery_list(request.form['missing_ing'])
+    return render_template('grocery-list.html', grocery_list = user.get_grocery_list())
 
 @app.route('/my-recipes', methods=['GET','POST'])
 def user_recipes():
