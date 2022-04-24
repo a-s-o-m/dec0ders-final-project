@@ -1,0 +1,37 @@
+{% block css %}
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/grocery-list.css') }}">
+{% endblock css %}
+
+{% block body %}
+<header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+        <nav class = "navbar">
+            <a class="logo-container" href="/home">
+                <img class="logo" src="{{ url_for('static', filename='/assets/logo.png')}}">
+            </a>
+            <h4 class="nav-caption">
+                <a href='/your-recipes' ><span>Recipes</span></a>    
+            </h4>
+            <h4 class="nav-caption">
+                <a href='/recipe'>My Fridge</a>
+            </h4>
+            <h4 class="nav-caption">
+                <a href='/grocery-list'><span>My Shopping List</span></a>
+            </h4>
+                
+        </nav>
+</header> 
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>Shopping List</h3>
+        {% for grocery in grocery_list %}
+        <p>{{grocery}} x({{grocery_list[grocery]}})</p>
+        {% endfor %}
+        <!-- user email-->
+        <a href="mailto:{{user_email}}?subject=Bite Squad Grocery List&body={{email_body}}" class="btn">Email </a>
+        <a onclick="window.print();" class="btn">Print </a> 
+    </div>
+</section>
+    
+{% endblock body %}
