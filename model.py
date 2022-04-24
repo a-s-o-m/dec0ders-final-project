@@ -8,14 +8,43 @@ class User:
         '''
         self.email = email
         self.recipes: Recipe = []
-        self.grocery_list: GroceryList = []
+        self.grocery_list = defaultdict(int)
+
+
+    def add_to_grocery_list(self, groceries_to_get: list):
+        for grocery in groceries_to_get:
+            self.grocery_list[grocery] += 1
+        # update grocery list in mongodb
+
+    #invoked if recipe is removed or marked as done  
+    def remove_from_grocery_list(self, groceries_to_remove: list):
+        for grocery in groceries_to_remove:
+            if self.grocery_list[grocery] > 1:
+                self.grocery_list[grocery] -= 1
+            else: del self.grocery_list[grocery]
+        # update grocery list in mongodb
+
+    def get_grocery_list(self):
+        return self.grocery_list
+
+    def get_grocery_list_email_body(self):
+        body = ''
+        for grocery, quantity in self.grocery_list.items():
+            body += f"{grocery} (x{quantity}) %0D%0A"
+        return body
 
     def to_doc(self):
-        pass
+        return {
+            'email': self.email,
+            'recipes': self.recipes,
+            'grocery_list': self.grocery_list
+        }
 
     @classmethod
-    def from_doc(cls, doc):
-        pass
+    def from_doc(cls, doc): 
+        cls.email = doc['email']
+        cls.recipes = doc['recipes']
+        cls.grocery_list = doc['grocery_list']       
 
 class Recipe:
     def __init__(self, id, title, image, total_ingredients, missing_ing, directions, missing_ing_count, ing_count, servings, prep_time, likes):
@@ -140,26 +169,3 @@ def get_recipes_test():
         "10":Recipe("10","Croque Monsieur","https://spoonacular.com/recipeImages/268203-312x231.jpg",['ham','cheese','bread'],
         ['mayo'],['put cheese on bread','soak sandwich on soap','enjoy'],'1','3','1','400','10')
     }
-
-class GroceryList:
-    def __init__(self):
-        '''
-        Holds all the missing ingredients that were added to the grocery list for the user
-        Arguments:
-        groceries_to_get: List of Strings containing the user's necessary missing ingredients
-        '''
-        self.groceries_dict = defaultdict(int)
-
-    def add_to_grocery_list(self, groceries_to_get: list):
-        for grocery in groceries_to_get:
-            self.groceries_dict[grocery] += 1
-        
-    def remove_from_grocery_list(self, groceries_to_remove: list):
-        for grocery in groceries_to_remove:
-            if self.groceries_dict[grocery] > 1:
-                self.groceries_dict[grocery] -= 1
-            else: del self.groceries_dict[grocery]
-
-    @classmethod
-    def from_doc(cls, doc):
-        pass
