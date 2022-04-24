@@ -38,6 +38,9 @@ def user_recipe():
 
     return render_template('recipe.html', recipe=recipe)
 
+@app.route('/email', methods=['GET','POST'])
+def email():
+    return render_template('email.html')
     
 if __name__=='__main__':
     app.run(debug=True)
