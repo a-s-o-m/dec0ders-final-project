@@ -57,11 +57,11 @@ def user_recipe():
 
     return render_template('recipe.html', recipe=recipe)
 
-@app.route('/email', methods=['GET','POST'])
+@app.route('/email', methods=['POST'])
 def email(): 
     # # find user with email
     users = mongo.db.users
-    #         #search for username/email in database
+    #         #search for username/email in database\
     existing_user = users.find_one({'email': request.form['email']})
     global user
     if not existing_user:
@@ -70,7 +70,7 @@ def email():
     # # transform to user object using from_doc method
     else: 
         user = User.from_doc(existing_user)   
-    return redirect('/')
+    return redirect('/search_page.html')
     
 if __name__=='__main__':
     app.run(debug=True)

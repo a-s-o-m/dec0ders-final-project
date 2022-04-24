@@ -14,11 +14,7 @@ class User:
 
 
     def add_to_grocery_list(self, groceries_to_get):
-        print(groceries_to_get, file=stderr)
-        print(len(groceries_to_get), file=stderr)
-        print(groceries_to_get[-1], file=stderr)
-        for grocery in groceries_to_get:
-            print(grocery, file=stderr)
+        for grocery in groceries_to_get.split(','):
             self.grocery_list[grocery] += 1
 
     #invoked if recipe is removed or marked as done  
