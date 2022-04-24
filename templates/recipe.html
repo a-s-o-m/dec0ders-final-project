@@ -46,7 +46,7 @@
             </div>
             {% if recipe.missing_ing_count != '0' %}
             <form method="POST" action="/grocery-list">
-                <input type="hidden" id="missing_ing" name="missing_ing" value="{{ recipe.missing_ing }}">
+                <input type="hidden" id="missing_ing" name="missing_ing" value="{{ recipe.missing_ing|join(',') }}">
                 <input class="missing-ing-button"type="submit" value="Add Missing Ingredients to My Shopping List">
             </form> 
             {% endif %}
