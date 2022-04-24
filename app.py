@@ -19,7 +19,7 @@ def home():
 def search():
     return render_template('search_page.html')
 
-@app.route('/your-recipes', methods=['GET','POST'])
+@app.route('/my-recipes', methods=['GET','POST'])
 def user_recipes():
     if request.method == 'POST': # User requests recipes with new ingredients
         global recipes 
@@ -27,9 +27,9 @@ def user_recipes():
         # recipes = get_recipes(ingredients_input)
         recipes = get_recipes_test() # Dummy recipe data for testing purposes
 
-        return render_template('recipes.html', recipes=recipes)
+        return render_template('recipes.html', recipes=recipes, new_recipes=True)
     else:
-        return render_template('recipes.html', recipes=recipes)
+        return render_template('recipes.html', recipes=recipes, new_recipes=False)
 
 @app.route('/recipe', methods = ['POST'])
 def user_recipe():

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+.main-container {
+    height: inherit;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-family:'Nunito', sans-serif;
+}
+.recipe-header-container {
+    padding: .5%;
+    height: 45%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd9cd;
+}
+.recipe-header-image {
+    height: 90%;
+    border-radius: 1em;
+}
+.recipe-header-information {
+    margin-left: 2%;
+    height: 100%;
+    width: 55%;
+    display: flex;
+    flex-flow: column;
+    overflow-wrap: break-word;
+
+}
+.recipe-header-information h1 {
+    font-size: 2.2em;
+    margin-top: 2%;
+    margin-left: 2.5%;
+
+}
+.recipe-stats {
+    margin-top: 2%;
+    height: 17%;
+    width: 48%;
+    display: flex;
+}
+.stat-box {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.divider {
+    width: 1px;
+    height: 95%;
+    background-color: #afafae;
+}
+.stat-box-title {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+.stat-box h1 {
+    width: 100%;
+    text-align: center;
+}
+.icon {
+    margin-right: 7%;
+}
+.accent {
+    color: #e85a4f;
+}
+.recipe-header-ingredients {
+    margin-top: 1.5%;
+    margin-left: 2.5%;
+    height: 40%;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+}
+.missing-ing-button {
+    margin-top: 2%;
+    margin-left: 2.5%;
+    padding:1rem 1rem;
+    border:2px solid #e85a4f;
+    color:#e85a4f;
+    background-color: white;
+    border-radius: .5rem;
+    font-size: 1em;
+    transition: .3s;
+}
+.missing-ing-button:hover { 
+    color: white;
+    background-color: #e85a4f;
+}
+.missing-ing-button:active {
+    transform: translateY(3px);
+}
+.recipe-steps-container {
+    margin-top: 1.5%;
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+}
+.recipe-steps-container h2 {
+    margin-bottom: 1.5%;
+}
+.step-box {
+    display: flex;
+    overflow-wrap: break-word;
+    padding: 1.5%;
+    margin-top: 1%;
+    border: 1px solid #ddd9cd;
+    border-radius: 1em;
+}
+.direction-box {
+    padding: 2%;;
+    font-size: 1.2em;
+    line-height: 2;
+}
+.step-number {
+    width: 3%;
+    text-align:start;
+}

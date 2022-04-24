@@ -29,6 +29,8 @@
                     justify-content: center;
                     background-color: var(--nav-background);
                     box-shadow:0 0 5px 0 #d8c3a56b;
+                    position: sticky;
+                    top: 0%;
                 }
                 .nav-container-right {
                     width: 80%;
@@ -53,13 +55,14 @@
                     font-family: var(--nav-font);
                     letter-spacing: .2em;
                     font-size: 1.1em;
+                    transition: .3s;
                 }
-                span {
+                .nav-accent {
                     color: #e85a4f;
                 }
                 
                 .nav-caption:hover {
-                    transform: translateY(-1px);
+                    transform: translateY(-2px);
                 }
                 a {
                     color: inherit; 
@@ -71,13 +74,16 @@
                     <img class="logo" src="{{ url_for('static', filename='/assets/logo.png')}}">
                 </a>
                 <h4 class="nav-caption">
-                    <a href='/' ><span>Home</span></a>    
+                    <a href='/' ><span class="nav-accent">Home</span></a>    
                 </h4>
                 <h4 class="nav-caption">
                     <a href='/fridge' >My Fridge</a>
                 </h4>
                 <h4 class="nav-caption">
-                    <a href='/shoppping_list'><span>My Shopping List</span></a>
+                    <a href='/my-recipes'><span class="nav-accent">My Recipes</span></a>
+                </h4>
+                <h4 class="nav-caption">
+                    <a href='/grocery-list'>My Shopping List</a>
                 </h4>
             </div>
             <!-- <div class="nav-container-left">

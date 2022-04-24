@@ -1,5 +1,5 @@
 {% extends 'nav-bar.html' %}
-{% block title %}- Your Recipes{% endblock title %}
+{% block title %}- My Recipes{% endblock title %}
 {% block css %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/recipes.css') }}">
 {% endblock css %}
@@ -7,13 +7,13 @@
 {% if not recipes %}
 <div class="main-container">
     <div class="caption-container">
-        <h3>No recipes found. Please add more ingredients to your fridge!</h3>
+        <h2 class="recipe-caption">No recipes found. Please add more ingredients to your fridge!</h3>
     </div>
 </div>
 {% else %}
 <div class="main-container">
     <div class="caption-container">
-        <h2 class="recipe-caption">Give these recipes a try!</h2>
+        <h2 class="recipe-caption">{% if new_recipes %}Give these recipes a try!{% else %}My Recipes{% endif %}</h2>
     </div>
     <div class="recipe-scroller">
         {% for recipe in recipes %}
@@ -21,13 +21,13 @@
             <img class="recipe-image" src="{{ recipes[recipe].image }}">
             <h5 class='recipe-title'>{{ recipes[recipe].title }}</h5>
             <div class="recipe-summary">
-                <p>Serves <span class="accent2">{{ recipes[recipe].servings }}</span>{% if recipes[recipe].servings=='1' %} person {% else %} people. {% endif %}</p>
-                <p>Ready in <span class="accent2">{{ recipes[recipe].prep_time }}</span> minutes.</p>
-                <p>Requires <span class="accent2">{{ recipes[recipe].ing_count }}</span> of your ingredients.</p>
-                {% if recipes[recipe].miss_ing_count == '0' %}
-                <p>No ingredients missing!</p>
+                <p>Serves {{ recipes[recipe].servings }}{% if recipes[recipe].servings=='1' %} person {% else %} people. {% endif %}</p>
+                <p>Ready in {{ recipes[recipe].prep_time }} minutes.</p>
+                <p>Requires {{ recipes[recipe].ing_count }} of your ingredients.</p>
+                {% if recipes[recipe].missing_ing_count == '0' %}
+                <p><span class="accent2">No ingredients missing!<span></p>
                 {% else %}
-                <p><span class="accent2">{{ recipes[recipe].miss_ing_count }}</span> Missing {% if recipes[recipe].miss_ing_count =='1' %}ingredient{% else %}ingredients{% endif %}.</p>
+                <p><span class="accent2">{{ recipes[recipe].missing_ing_count }} Missing {% if recipes[recipe].missing_ing_count =='1' %}ingredient{% else %}ingredients{% endif %}</span>.</p>
                 {% endif %}
             </div>
             <form method="POST" action="/recipe">

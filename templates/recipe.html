@@ -1,9 +1,73 @@
 {% extends 'nav-bar.html' %}
-{% block title %}- Your Recipes{% endblock title %}
+{% block title %}- {{ recipe['title'] }}{% endblock title %}
 {% block css %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/recipes.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/recipe.css') }}">
 {% endblock css %}
 {% block body %}
 <div class="main-container">
+    <div class="recipe-header-container">
+        <img class="recipe-header-image"src="{{ recipe.image }}">
+        <div class="recipe-header-information">
+            <h1>{{ recipe.title }}</h1>
+            <div class="recipe-stats">
+                <div class="stat-box">
+                    <div class="stat-box-title">
+                        <p class="accent icon">&#x2665;</p>
+                        <p>Likes</p>
+                    </div>
+                    <h2>{{ recipe.likes }}</h2>
+                </div>
+                <span class="divider"></span>
+                <div class="stat-box">
+                    <div class="stat-box-title">
+                        <p class="icon">&#9201;</p>
+                        <p>Minutes</p>
+                    </div>
+                    <h2>{{ recipe.prep_time }}</h2>
+                </div>
+                <span class="divider"></span>
+                <div class="stat-box">
+                    <div class="stat-box-title">
+                        <p class="accent icon">&#127869;</p>
+                        <p>Servings</p>
+                    </div>
+                    <h2>{{ recipe.servings }}</h2>
+                </div>
+            </div>
+            <div class="recipe-header-ingredients">
+                <h3>Ingredients:</h3>
+                <p>{% for ing in recipe.total_ingredients %}<span style="color:green;">&#10003;</span> {{ ing.title() }} {% endfor %}</p>
+                {% if recipe.missing_ing_count == '0' %}
+                <h3>You have all the required ingredients in your fridge!<h3>
+                {% else %}
+                <h3>Missing Ingredients:</h3>
+                <p>{% for ing in recipe.missing_ing %}<span style="color:red;">&#x2715;</span> {{ ing.title() }} {% endfor %}</p>
+                {% endif %}
+            </div>
+            {% if recipe.missing_ing_count != '0' %}
+            <form method="POST" action="/grocery-list">
+                <input type="hidden" id="missing_ing" name="missing_ing" value="{{ recipe.missing_ing }}">
+                <input class="missing-ing-button"type="submit" value="Add Missing Ingredients to My Shopping List">
+            </form> 
+            {% endif %}
+        </div>
+    </div>
+    <div class="recipe-steps-container">
+        <h2>Directions:</h2>
+        {% for i in range(1, (recipe.directions|length)+1) %}
+        <div class="step-box">
+            <h3 class="step-number">{{ i }}. </h3>
+            <div class="direction-box">
+                <p>{{ recipe.directions[i-1] }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="step-box">
+            <h3 class="step-number">{{ recipe.directions|length+1 }}. </h3>
+            <div class="direction-box">
+                <p>Enjoy!</p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock body %}
