@@ -1,6 +1,8 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect, url_for
 from model import User, get_recipes, get_recipes_test
+from sys import stderr
+
 
 # App variables
 app = Flask(__name__)
@@ -9,13 +11,14 @@ app.config['MONGO_DBNAME'] = 'database'
 
 # URI of database
 # Accessed from CONFIG VARS
-app.config['MONGO_URI'] = "mongodb+srv://test:<-password->@finalproject.wnetq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://test:test@finalproject.wnetq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app)
 
 user = User('demo@user.com')
 recipes = dict()
+users = mongo.db.users
 
 # HOME Route
 @app.route('/')
@@ -44,6 +47,7 @@ def shopping_list():
     global user
     if request.method == 'POST':
         user.add_to_grocery_list(request.form['missing_ing'])
+        users.update_one({'email': user.email}, {'$set':{'grocery_list': user.get_grocery_list()}})
     return render_template('grocery-list.html', grocery_list = user.get_grocery_list(), user_email = user.email, email_body = user.get_grocery_list_email_body())
 
 @app.route('/my-recipes', methods=['GET','POST'])

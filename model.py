@@ -1,6 +1,8 @@
 
 import requests
 from collections import defaultdict
+from sys import stderr
+
 class User:
     def __init__(self, email: str):
         '''
@@ -11,10 +13,13 @@ class User:
         self.grocery_list = defaultdict(int)
 
 
-    def add_to_grocery_list(self, groceries_to_get: list):
+    def add_to_grocery_list(self, groceries_to_get):
+        print(groceries_to_get, file=stderr)
+        print(len(groceries_to_get), file=stderr)
+        print(groceries_to_get[-1], file=stderr)
         for grocery in groceries_to_get:
+            print(grocery, file=stderr)
             self.grocery_list[grocery] += 1
-        # update grocery list in mongodb
 
     #invoked if recipe is removed or marked as done  
     def remove_from_grocery_list(self, groceries_to_remove: list):
