@@ -7,9 +7,10 @@
 {% block body %}
 <body>
     <h1></h1>
-    <!-- <form method="POST" action="/email"> -->
-        <input type="text" name="Email" placeholder="enter email" /> <br>
+    <form method="POST" action="/email">
+        <input type="text" name="email" placeholder="Enter email" /> <br>
+        <input type="submit" id="button" value="Submit" />
     </form>
-    <!-- <h2>{{error}}</h1> -->
+    <h2>{{error}}</h1>
 </body>
 {% endblock body %}

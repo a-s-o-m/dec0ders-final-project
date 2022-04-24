@@ -23,20 +23,8 @@ users = mongo.db.users
 # HOME Route
 @app.route('/')
 @app.route('/home')
-def home():
-    # move to email form to be created by renee 
-    # # find user with email
-    # users = mongo.db.users
-    #         #search for username/email in database
-    # existing_user = users.find_one({'email': request.form['email']})
-    # global user
-    # if not existing_user:
-    #     user = User(request.form['email'])
-    #     users.insert_one(user.to_doc())
-    # # transform to user object using from_doc method
-    # else: user = User.from_doc(existing_user)    
+def home(): 
     return render_template('home.html')
-
 
 @app.route('/search')
 def search():
@@ -70,8 +58,19 @@ def user_recipe():
     return render_template('recipe.html', recipe=recipe)
 
 @app.route('/email', methods=['GET','POST'])
-def email():
-    return render_template('email.html')
+def email(): 
+    # # find user with email
+    users = mongo.db.users
+    #         #search for username/email in database
+    existing_user = users.find_one({'email': request.form['email']})
+    global user
+    if not existing_user:
+        user = User(request.form['email'])
+        users.insert_one(user.to_doc())
+    # # transform to user object using from_doc method
+    else: 
+        user = User.from_doc(existing_user)   
+    return redirect('/')
     
 if __name__=='__main__':
     app.run(debug=True)

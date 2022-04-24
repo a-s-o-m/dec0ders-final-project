@@ -81,44 +81,6 @@ section{
   color:#fff;
 }
 
-header{
-    height: 9%;
-    display: flex;
-    justify-content: center;
-    background-color: var(--nav-background);
-    box-shadow:0 0 5px 0 #d8c3a56b;
-  } 
-
-.navbar {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-caption {
-    margin-left: 6%;
-    color: var(--nav-font);
-    font-family: var(--nav-font);
-    letter-spacing: .2em;
-    font-size: 2em;
-}
-.logo {
-    height: 100%;
-}
-.logo-container {
-    margin-top: 1%;
-    height: 83%;
-    width: 5%;
-}
-span {
-    color: #e85a4f;
-}
-
-.nav-caption:hover {
-    transform: translateY(-1px);
-}
-
 .home{
   display: flex;
   flex-wrap: wrap;
