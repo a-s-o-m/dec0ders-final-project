@@ -14,24 +14,24 @@ app.config['MONGO_URI'] = "mongodb+srv://test:<-password->@finalproject.wnetq.mo
 #Initialize PyMongo
 mongo = PyMongo(app)
 
-# find user with email
-users = mongo.db.users
-        #search for username/email in database
-existing_user = users.find_one({'email': request.form['email']})
-
-if not existing_user:
-    user = User(request.form['email'])
-    users.insert_one(user.to_doc())
-else: user = User.from_doc(existing_user)
-
-# transform to user object using from_doc method
+user = User('demo@user.com')
 recipes = dict()
-
 
 # HOME Route
 @app.route('/')
 @app.route('/home')
 def home():
+    # move to email form to be created by renee 
+    # # find user with email
+    # users = mongo.db.users
+    #         #search for username/email in database
+    # existing_user = users.find_one({'email': request.form['email']})
+    # global user
+    # if not existing_user:
+    #     user = User(request.form['email'])
+    #     users.insert_one(user.to_doc())
+    # # transform to user object using from_doc method
+    # else: user = User.from_doc(existing_user)    
     return render_template('home.html')
 
 
@@ -42,8 +42,9 @@ def search():
 @app.route('/grocery-list', methods = ['GET','POST'])
 def shopping_list():
     if request.method == 'POST':
+        global user
         user.add_to_grocery_list(request.form['missing_ing'])
-    return render_template('grocery-list.html', grocery_list = user.get_grocery_list())
+    return render_template('grocery-list.html', grocery_list = user.get_grocery_list(), user_email = user.email)
 
 @app.route('/my-recipes', methods=['GET','POST'])
 def user_recipes():
