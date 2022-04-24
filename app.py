@@ -54,7 +54,7 @@ def user_recipe():
 
     return render_template('recipe.html', recipe=recipe)
 
-@app.route('/home', methods=['GET','POST'])
+@app.route('/email', methods=['GET','POST'])
 def email(): 
     # # find user with email
     users = mongo.db.users
@@ -66,7 +66,7 @@ def email():
         users.insert_one(user.to_doc())
     # # transform to user object using from_doc method
     else: user = User.from_doc(existing_user)   
-    return render_template('search_page.html')
+    return render_template('search_page.html', existing_user = existing_user)
     
 if __name__=='__main__':
     app.run(debug=True)

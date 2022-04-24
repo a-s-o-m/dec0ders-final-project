@@ -17,14 +17,12 @@
         <!-- form here to input email here-->
         <!-- form should only show if no currently logged in user-->
         {% if not existing_user%}
-        <form method="post" action="/home"></form>
         <form>
-            <input type="email" placeholder="Enter your email">
-            <input type="submit" value="Submit">
+                <a href = "/email" class = "btn">Enter your email!</a>
         </form>
-        
+               
         {%else%}
-        <p>Welcome!, lets get startes</p>
+        <p>Welcome!, lets get started</p>
         <a href="/search" class="btn">Browse Now</a>
         {% endif %}
         <!-- <a href="/email" class="btn">Get Started</a> -->
