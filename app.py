@@ -62,7 +62,6 @@ def email():
     # # find user with email
     users = mongo.db.users
     #         #search for username/email in database\
-    print(request.form['email'])
     existing_user = users.find_one({'email': request.form['email']})
     global user
     if not existing_user:
@@ -71,7 +70,7 @@ def email():
     # # transform to user object using from_doc method
     else: 
         user = User.from_doc(existing_user)   
-    return redirect('/')
+    return redirect('/search_page.html')
     
 if __name__=='__main__':
     app.run(debug=True)
