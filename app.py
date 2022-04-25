@@ -17,6 +17,8 @@ mongo = PyMongo(app)
 user = User('')
 recipes = dict()
 
+# test
+
 # HOME Route
 @app.route('/')
 @app.route('/home')
@@ -46,8 +48,8 @@ def user_recipes():
     if request.method == 'POST': # User requests recipes with new ingredients
         global recipes 
         ingredients_input = request.form['ingredients']
-        recipes = get_recipes(ingredients_input)
-        #recipes = get_recipes_test() # Dummy recipe data for testing purposes
+        # recipes = get_recipes(ingredients_input)
+        recipes = get_recipes_test() # Dummy recipe data for testing purposes
 
         return render_template('recipes.html', recipes=recipes, new_recipes=True)
     else:
