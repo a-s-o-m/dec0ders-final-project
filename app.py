@@ -77,6 +77,7 @@ def email():
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    '''
     if request.method == "POST":
         ingredients = mongo.db.ingredients
         ingredients_input = request.form['ingredients']
@@ -91,7 +92,7 @@ def search():
             #store user input in session
             ingredient = ingredients.to_document()
             return render_template('recipes.html', ingredients = ingredients)
-        return render_template('search_page.html', error='Ingredients can not be found. Please try again.')
+        return render_template('search_page.html', error='Ingredients can not be found. Please try again.')'''
     return render_template('search_page.html')
 
     

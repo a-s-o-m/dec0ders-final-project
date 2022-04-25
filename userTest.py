@@ -1,7 +1,7 @@
-import unittest
+'''import unittest
 
 #import app from App
-from Email import email
+from email import Email
 
 class TestRecipes(unittest.TestCase):
     def setUp(self):
@@ -12,4 +12,4 @@ class TestRecipes(unittest.TestCase):
     def testUser(self):
         testUser = Email(self.email)
         test_object = set()
-    
+    '''
