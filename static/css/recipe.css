@@ -47,7 +47,7 @@ html, body {
 .recipe-stats {
     margin-top: 1%;
     height: 15%;
-    width: 70%;
+    width: 65%;
     display: flex;
 }
 .stat-box {
@@ -114,7 +114,7 @@ html, body {
     
 }
 .recipe-steps-container h2 {
-    margin-bottom: 1.5%;
+    margin: 1% 1.5%;
 }
 .step-box {
     display: flex;
