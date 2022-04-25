@@ -41,6 +41,7 @@ section{
   text-align: center;
   font-size: 3.5rem;
   padding:1rem;
+  
 }
 
 .heading span{
@@ -158,8 +159,7 @@ span {
 .home .content h3{
   font-size: 5rem;
   color:#333;
-  position: fixed;
-  top:350; left:600;
+  position: center;
   
 }
 
@@ -167,7 +167,7 @@ span {
   font-size: 1.7rem;
   color:#666;
   padding:1rem 0;
-  
+  position: center;
 }
 
   
