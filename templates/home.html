@@ -16,14 +16,6 @@
         <!-- instruction should only show if not logeed in-->
         <!-- form should only show if no currently logged in user-->
         {% if not existing_user%}
-<<<<<<< HEAD
-        <form>
-                <a href = "/email" class = "btn">Enter your email!</a>
-        </form>
-               
-        {%else%}
-        <p>Welcome!, lets get started</p>
-=======
         <p>Enter your email and click submit to get started.</p>
         <form method="post" action="/email">
             <input name="email" placeholder="Enter your email">
@@ -31,7 +23,6 @@
         </form>
         {%else%}
         <!-- <p>Welcome!, lets get started</p> -->
->>>>>>> c3296f79a5c848faf96cebd1abbc9215702e224e
         <a href="/search" class="btn">Browse Now</a>
         {% endif %}
     </div>
