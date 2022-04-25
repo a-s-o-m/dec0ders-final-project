@@ -147,7 +147,7 @@ def get_recipes(ingredients_input: str):
 
         recipes[id] = Recipe(id,title,image,user_ingredients,missing_ing,directions,missing_ing_count,ing_count,servings,prep_time,likes) # Appending Recipe object
     
-    return recipes
+    return recipes 
 
 def get_recipes_test():
     '''
@@ -175,3 +175,7 @@ def get_recipes_test():
         "10":Recipe("10","Croque Monsieur","https://spoonacular.com/recipeImages/268203-312x231.jpg",['ham','cheese','bread'],
         ['mayo'],['put cheese on bread','soak sandwich on soap','enjoy'],'1','3','1','400','10')
     }
+def search(ingredients_input: str):
+    data = [222]
+    return data
+

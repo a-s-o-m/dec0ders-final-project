@@ -3,11 +3,22 @@
 {% block title %}- Home{% endblock %}
 {% block css %}{% endblock %}
 {% block body %}
+
+<section class="home" id="home">
+    <div class="content">
 <form method="POST" action="/my-recipes">
     <h1>What do you have in the fridge?</h1>
     <container>
-        <input type="text" placeholder="bread,salt,eggs..." name="ingredients">
+        <input type="text" placeholder="bread,salt,eggs..." name="ingredients" style="width: 200px;">
         <button type="submit">Search</button>
+        <button type="reset">Reset</button>
     </container>
 </form>
+    </div>
+<div class="image">
+    <img src="{{ url_for('static', filename='assets/Pot.JPG')}}" alt="">
+</div>
+
+</section>
+
 {% endblock %}

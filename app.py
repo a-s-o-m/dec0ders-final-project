@@ -27,10 +27,10 @@ def home():
     return render_template('home.html', existing_user = user)
 
 
-@app.route('/search')
+'''@app.route('/search')
 def search():
     return render_template('search_page.html')
-
+'''
 @app.route('/grocery-list', methods = ['GET','POST'])
 def shopping_list():
         # # find user with email
@@ -74,6 +74,27 @@ def email():
         print(existing_user)
         user = User.from_doc(existing_user)  
     return render_template('search_page.html')
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    '''
+    if request.method == "POST":
+        ingredients = mongo.db.ingredients
+        ingredients_input = request.form['ingredients']
+        #existing_ingredient = ingredients.find_one({'ingredients':request.form['ingredients']})
+        global ingredient   
+    if not existing_ingredient:
+
+        #if grocery was valid 
+        #if ingredients_input != request.form['ingredients']:
+            #add user input to database
+            ingredients_input.ingredients(ingredients.to_doc())
+            #store user input in session
+            ingredient = ingredients.to_document()
+            return render_template('recipes.html', ingredients = ingredients)
+        return render_template('search_page.html', error='Ingredients can not be found. Please try again.')'''
+    return render_template('search_page.html')
+
     
 if __name__=='__main__':
     app.run(debug=True)
